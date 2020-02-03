@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ConterAgentModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Individual">
+          <Key>
+            <PropertyRef Name="IndividualId" />
+          </Key>
+          <Property Name="IndividualId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FamilyName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FatherName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="BIN/IIN" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CreatedDate" Type="date" />
+          <Property Name="EditedDate" Type="date" />
+          <Property Name="Author" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LegalEntity">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FamilyName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CompanyName" Type="varchar" MaxLength="50" />
+          <Property Name="BIN/IIN" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CreatedDate" Type="date" />
+          <Property Name="EditedDate" Type="date" />
+          <Property Name="Author" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="ConterAgentModelStoreContainer">
+          <EntitySet Name="Individual" EntityType="Self.Individual" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LegalEntity" EntityType="Self.LegalEntity" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ConterAgentModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Individual">
+          <Key>
+            <PropertyRef Name="IndividualId" />
+          </Key>
+          <Property Name="IndividualId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FamilyName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FatherName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BIN_IIN" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="0" />
+          <Property Name="EditedDate" Type="DateTime" Precision="0" />
+          <Property Name="Author" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LegalEntity">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FamilyName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CompanyName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BIN_IIN" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="0" />
+          <Property Name="EditedDate" Type="DateTime" Precision="0" />
+          <Property Name="Author" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="ConterAgentEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Individuals" EntityType="Self.Individual" />
+          <EntitySet Name="LegalEntities" EntityType="Self.LegalEntity" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ConterAgentModelStoreContainer" CdmEntityContainer="ConterAgentEntities">
+          <EntitySetMapping Name="Individuals">
+            <EntityTypeMapping TypeName="ConterAgentModel.Individual">
+              <MappingFragment StoreEntitySet="Individual">
+                <ScalarProperty Name="IndividualId" ColumnName="IndividualId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="FamilyName" ColumnName="FamilyName" />
+                <ScalarProperty Name="FatherName" ColumnName="FatherName" />
+                <ScalarProperty Name="BIN_IIN" ColumnName="BIN/IIN" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="EditedDate" ColumnName="EditedDate" />
+                <ScalarProperty Name="Author" ColumnName="Author" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LegalEntities">
+            <EntityTypeMapping TypeName="ConterAgentModel.LegalEntity">
+              <MappingFragment StoreEntitySet="LegalEntity">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="FamilyName" ColumnName="FamilyName" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="BIN_IIN" ColumnName="BIN/IIN" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="EditedDate" ColumnName="EditedDate" />
+                <ScalarProperty Name="Author" ColumnName="Author" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
